@@ -1,4 +1,5 @@
 # FAQ
+常问问题
 
 ## 系统环境错误
 - ERROR - Unsupported or unidentified Linux distro.  
