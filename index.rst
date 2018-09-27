@@ -17,6 +17,7 @@ FISCO BCOS平台基于现有的BCOS开源项目进行开发，聚焦于金融行
    docs/web3sdk/index.rst
    docs/tools/index.rst
    docs/guomi/index.rst
+   docs/mulchain/index.rst
    docs/features/index.rst
    docs/applications/index.rst
    docs/wiki/index.rst
