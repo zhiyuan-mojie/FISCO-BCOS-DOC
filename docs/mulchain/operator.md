@@ -2,7 +2,7 @@
 
 ## 部署物料包
 ```
-$git clone https://github.com/ywy2090/multi-chain.git
+$ git clone https://github.com/ywy2090/multi-chain.git
 $ cd multi-chain
 ```
 多链物料包结构如下所示，相关操作会在对应命令中进行解释
@@ -48,7 +48,7 @@ usage: main.py [-h] [--version] [--build ./config.conf or ./conf/ fisco_path]
 ### 生成单条链
 命令有两个input参数，分别为conf配置和fisco-bcos路径，示例如下
 ```
-$python main.py --build ./conf/sample_12345_v1.0.conf $PATH/fisco-bcos
+$ python main.py --build ./conf/sample_12345_v1.0.conf $PATH/fisco-bcos
 ```
 如果要生成某一条的链安装包执行第一个命令，如果在该目录下有多个安装包的conf文件，则执行第二条命令。build命令第二项参数为fisco-bcos的路径
 
@@ -185,7 +185,7 @@ node1=127.0.0.6 127.0.0.6 3
 ```
 执行
 ```
-$python main.py --build ./conf $PATH/fisco-bcos
+$ python main.py --build ./conf $PATH/fisco-bcos
 ```
 上面的配置会生成三条链，
 链id12345的链会在
@@ -269,7 +269,7 @@ INFO |  echo opr end.
 ## 发布多链安装包 --publish命令
 publish为多链的发布命令，用户需要制定链id和版本号，中间用":"隔开
 ```
-$python main.py --publish chain_id_1:version_1 chain_id_2:version_2 ...
+$ python main.py --publish chain_id_1:version_1 chain_id_2:version_2 ...
 ```
 chain_id_n:version_n 为chain的id和版本号，中间用":"隔开
 示例：
@@ -277,7 +277,7 @@ chain_id_n:version_n 为chain的id和版本号，中间用":"隔开
 
 执行:
 ```
-$python main.py --publish 12345:v1.0.0 12346:v1.0.0 12347:v1.0.0
+$ python main.py --publish 12345:v1.0.0 12346:v1.0.0 12347:v1.0.0
 ```
 执行完成后可以看到
 ```
@@ -290,13 +290,13 @@ INFO |  publish opr end.
 ## 启动多链节点 --start命令
 start命令允许用户在运维服务器上启动所有节点，或者某条链的节点，或者某条链对应某个服务器的节点。
 ```
-$python main.py --start [all or chain_id or chain_id:host_ip]
+$ python main.py --start [all or chain_id or chain_id:host_ip]
 ```
 
 三种参数分别对应启动部署的所有链的节点，部署的对应chain_id链的节点，和对应chain_id的host_ip的服务器的节点
 ### 启动部署所有链所有节点
 ```
-$python main.py --start all
+$ python main.py --start all
 ```
 执行完成后可以看到
 ```
@@ -310,7 +310,7 @@ INFO |  start opr end.
 上述命令启动了部署完成的所有链的全部节点
 ### 启动多条链节点
 ```
-$python main.py --start 12345 12346 12347
+$ python main.py --start 12345 12346 12347
 ```
 执行完成后可以看到
 ```
@@ -325,7 +325,7 @@ INFO |  start opr end.
 
 ### 启动多条链对应服务器节点
 ```
-$python main.py --start 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
+$ python main.py --start 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
 ```
 执行完成后可以看到
 ```
@@ -340,104 +340,104 @@ INFO |  start opr end.
 
 ## 停止多链节点 --stop命令
 ```
-$python main.py --stop [all or chain_id or chain_id:host_ip]
+$ python main.py --stop [all or chain_id or chain_id:host_ip]
 ```
 stop命令的原理与start命令类似
 示例如下：
 ### 停止部署所有链所有节点
 ```
-$python main.py --stop all
+$ python main.py --stop all
 ```
 
 上述命令停止了部署完成的所有链的全部节点
 ### 停止多条链节点
 ```
-$python main.py --stop 12345 12346 12347
+$ python main.py --stop 12345 12346 12347
 ```
 
 上述命令启动了链id为12345 12346 12347三条链的节点
 
 ### 停止多条链对应服务器节点
 ```
-$python main.py --stop 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
+$ python main.py --stop 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
 ```
 上述命令停止了链12345在127.0.0.1服务器上的3个节点， 链12346在127.0.0.2上的3个节点， 12347在127.0.0.3上的2个节点。
 
 ## 检查多链节点启动情况 --check命令
 ```
-$python main.py --check [all or chain_id or chain_id:host_ip]
+$ python main.py --check [all or chain_id or chain_id:host_ip]
 ```
 check命令的原理与start命令类似
 示例如下：
 ### 检查部署所有链所有节点
 ```
-$python main.py --check all
+$ python main.py --check all
 ```
 
 ### 检查多条链节点
 ```
-$python main.py --check 12345 12346 12347
+$ python main.py --check 12345 12346 12347
 ```
 
 ### 检查多条链对应服务器节点
 ```
-$python main.py --check 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
+$ python main.py --check 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
 ```
 
 ## 检查多链节点运行情况 --monitor命令
 ```
-$python main.py --monitor [all or chain_id or chain_id:host_ip]
+$ python main.py --monitor [all or chain_id or chain_id:host_ip]
 ```
 monitor命令的原理与start命令类似
 示例如下：
 ### 检查部署所有链所有节点
 ```
-$python main.py --monitor all
+$ python main.py --monitor all
 ```
 
 ### 检查多条链节点
 ```
-$python main.py --monitor 12345 12346 12347
+$ python main.py --monitor 12345 12346 12347
 ```
 
 ### 检查多条链对应服务器节点
 ```
-$python main.py --monitor 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
+$ python main.py --monitor 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
 ```
 
 **请注意 monitor命令是检查节点的运行状况，check命令是检查节点的启动情况**
 
 ## 列出生成安装包节点 --pkg_list命令
 ```
-$python main.py --pkg_list [all or chain_id]
+$ python main.py --pkg_list [all or chain_id]
 ```
 pkg_list命令的原理与start命令类似
 示例如下：
 ### 列出所有节点
 ```
-$python main.py --pkg_list all
+$ python main.py --pkg_list all
 ```
 
 ### 列出多条链节点
 ```
-$python main.py --pkg_list 12345 12346 12347
+$ python main.py --pkg_list 12345 12346 12347
 ```
 
 
 ## 列出发布安装包节点 --pub_list命令
 ```
-$python main.py --pub_list [all or chain_id]
+$ python main.py --pub_list [all or chain_id]
 ```
 ppub_list命令的原理与start命令类似
 示例如下：
 ### 列出所有节点
 ```
-$python main.py --pub_list all
+$ python main.py --pub_list all
 ```
 
 ### 列出多条链节点
 ```
-$python main.py --pub_list 12345 12346 12347
+$ python main.py --pub_list 12345 12346 12347
 ```
 
 ## ca证书相关操作 
