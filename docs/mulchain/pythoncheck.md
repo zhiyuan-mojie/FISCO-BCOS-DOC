@@ -5,6 +5,7 @@
 
 ### python2.7安装
 centOS系统
+
 centos系统自带python2版本，一般情况下不需要安装，如果python版本不为2.7，则需要进行如下操作
 ```
 $ sudo yum install zlib-devel
