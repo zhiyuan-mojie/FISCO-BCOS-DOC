@@ -50,7 +50,7 @@ $ pip -V
 ```
 观察是否提示为
 Python 2.7.X
-pip X.X.X from /usr/lib/python2.7/dist-packages (python 2.7) 观察之后的版本时候与python对应
+pip X.X.X from /usr/lib/python2.7/dist-packages (python 2.7) 观察版本是否与python对应
 ```
 $ python
 >>> import configparser

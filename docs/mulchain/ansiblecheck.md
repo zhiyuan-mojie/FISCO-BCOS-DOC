@@ -2,7 +2,7 @@
 请注意
 **只需要在运维服务器上部署ansible即可**
 
-部署多链时需要用到ansible进行多服务器的数据流传输，ansible是基于Python开发，集合了众多运维工具（puppet、cfengine、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能的一个自动化运维工具。本文是多链物料包ansible的配置文档。
+部署多链时需要用到ansible进行多服务器的数据流传输。本文是多链物料包ansible的配置文档。
 
 ## 安装
 centOS系统
@@ -66,13 +66,13 @@ vim /etc/ansible/hosts
 
 127.0.0.4 ansible_ssh_user=auser_name ansible_ssh_pass='user@passwd' ansible_port=36000
 ```
-127.0.0.1为托管后患服务器ip
+127.0.0.1为托管后台服务器ip
 
 ansible_ssh_user=auser_name 为托管服务器用户名 auser_name为用户需要配置的用户名
 
 ansible_ssh_pass='user@passwd' user@passwd为与托管服务器进行ssh通信的密码
 
-ansible_port=36000 为域托管服务器进行ssh通信的端口号 如36000 如果不设置，默认使用22端口进行ssh通信
+ansible_port=36000 为托管服务器进行ssh通信的端口号 如36000。 若不设置，默认使用22端口进行ssh通信
 
 上述配置中，用户可以通过 用户名为auser_name 的用户，与127.0.0.1，127.0.0.2，127.0.0.3，127.0.0.4进行端口号为36000的ssh通信，ssh的通信密码为user@passwd
 

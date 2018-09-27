@@ -1,8 +1,11 @@
 # 多链操作手册
 
 ## 部署物料包
+```
 $git clone https://github.com/ywy2090/multi-chain.git
-cd multi-chain
+$ cd multi-chain
+```
+多链物料包结构如下所示，相关操作会在对应命令中进行解释
 ```
 |-- conf
 |-- data
@@ -16,7 +19,7 @@ cd multi-chain
 |-- scripts
 `-- tpl
 ```
-多链物料包结构如上述所示，相关操作会在对应命令中进行解释
+
 
 ## 查询命令 -h
 ```
@@ -402,7 +405,7 @@ $python main.py --monitor 12345 12346 12347
 $python main.py --monitor 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
 ```
 
-## **请注意 monitor命令是检查节点的运行状况，check命令是检查节点的启动情况**
+**请注意 monitor命令是检查节点的运行状况，check命令是检查节点的启动情况**
 
 ## 列出生成安装包节点 --pkg_list命令
 ```
