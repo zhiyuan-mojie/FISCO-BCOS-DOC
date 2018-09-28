@@ -73,6 +73,10 @@ hostip对应服务器命令执行错误，请检查错误结果，对应failed�
   
 rpc/channel/p2p port被占用，请尝试修改端口号从新进行安装。
 
+- ERROR | syntax error unexpected end of file
+- ERROR | 语法错误 未预期的文件结尾
+
+format.sh脚本执行失败，请尝试从新进行部署或手动将文件转义成unix
 ## build命令错误
 - ERROR | fisco-bcos is not exist, path is ******
 
