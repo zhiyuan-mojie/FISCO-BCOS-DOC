@@ -54,52 +54,49 @@ $ python main.py --build ./conf/sample_12345_v1.0.conf $PATH/fisco-bcos
 
 mchain.conf为相关的部署目录和机构名称，用户根据需要修改。
 
-用户使用时，首先更改./conf 目录下的sample_12345_v1.0.conf文件，如果需要部署多条链，需要拷贝多个conf文件。
-<details>
-    <summary>sample_12345_v1.0.conf文件示例如下：
-    ```
-    ;common config
-    [chain]
-    chainid=12345
-    version=v1.0.0
-    ```
-    链相关配置，chainid为链id，必须为整形。version为版本号
-    ```
-    ;port config, in general, use the default values
-    [ports]
-    ; p2p port
-    p2p_port=30303
-    ; rpc port
-    rpc_port=8545
-    ; channel port
-    channel_port=8821
-    ```
-    fisco-bcos的每个节点需要使用3个端口,p2pport、rpcport、channelport, [ports]配置的端口是服务器上面的第一个节点使用的端口,其他节点依次递增。
-    ```
-    ;node info
-    [nodes]
-    ; node config format : nodeIDX= host_ip p2p_ip node_num
-    ; IDX is index value
-    ; host_ip : host ip network of the server
-    ; p2p_ip ：p2p ip network of the server
-    ; num ：the num of the node on this server
-    node0=127.0.0.1 127.0.0.1 3
-    node1=127.0.0.2 127.0.0.2 3
-    ```
-    上面的配置首先要在127.0.0.1服务器上启动3个节点, 按照默认的配置：
+用户使用时，首先更改./conf 目录下的sample_12345_v1.0.conf文件，如果需要部署多条链，需要拷贝多个conf文件。sample_12345_v1.0.conf文件示例如下：
+```
+;common config
+[chain]
+chainid=12345
+version=v1.0.0
+```
+链相关配置，chainid为链id，必须为整形。version为版本号
+```
+;port config, in general, use the default values
+[ports]
+; p2p port
+p2p_port=30303
+; rpc port
+rpc_port=8545
+; channel port
+channel_port=8821
+```
+fisco-bcos的每个节点需要使用3个端口,p2pport、rpcport、channelport, [ports]配置的端口是服务器上面的第一个节点使用的端口,其他节点依次递增。
+```
+;node info
+[nodes]
+; node config format : nodeIDX= host_ip p2p_ip node_num
+; IDX is index value
+; host_ip : host ip network of the server
+; p2p_ip ：p2p ip network of the server
+; num ：the num of the node on this server
+node0=127.0.0.1 127.0.0.1 3
+node1=127.0.0.2 127.0.0.2 3
+```
+上面的配置首先要在127.0.0.1服务器上启动3个节点, 按照默认的配置：
 
-    * 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
-    * 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
-    * 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
-    
-    然后在127.0.0.2服务器上启动3个节点, 按照默认的配置：
+* 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
+* 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
+* 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
+  
+然后在127.0.0.2服务器上启动3个节点, 按照默认的配置：
 
-    * 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
-    * 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
-    * 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
-    
-    上述配置共同在两个服务器上组成6个节点的一条链。
-</details>
+* 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
+* 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
+* 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
+  
+上述配置共同在两个服务器上组成6个节点的一条链。
 
 生成的安装包在./data/chain 目录下
 
