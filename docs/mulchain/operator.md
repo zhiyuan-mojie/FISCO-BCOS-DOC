@@ -54,7 +54,9 @@ $ python main.py --build ./conf/sample_12345_v1.0.conf $PATH/fisco-bcos
 
 mchain.conf为相关的部署目录和机构名称，用户根据需要修改。
 
-用户使用时，首先更改./conf 目录下的sample_12345_v1.0.conf文件，如果需要部署多条链，需要拷贝多个conf文件。sample_12345_v1.0.conf文件示例如下：
+用户使用时，首先更改./conf 目录下的sample_12345_v1.0.conf文件，如果需要部署多条链，需要拷贝多个conf文件。
+<details>
+<summary>sample_12345_v1.0.conf文件示例如下：
 ```
 ;common config
 [chain]
@@ -97,6 +99,7 @@ node1=127.0.0.2 127.0.0.2 3
 * 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
   
 上述配置共同在两个服务器上组成6个节点的一条链。
+</details>
 
 生成的安装包在./data/chain 目录下
 
