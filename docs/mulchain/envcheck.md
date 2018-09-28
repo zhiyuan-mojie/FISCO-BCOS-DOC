@@ -9,14 +9,6 @@
   
   参考FISCO BCOS的[机器配置](https://github.com/FISCO-BCOS/FISCO-BCOS/tree/master/doc/manual#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E9%83%A8%E7%BD%B2fisco-bcos%E7%8E%AF%E5%A2%83)
 
-```
-  支持的系统：
-
-  CentOS 7.2 64位
-
-  Ubuntu 16.04 64位
-```
-
 ## 环境CheckList 
 FISCO BCOS对网络、yum源等外部环境存在依赖, 为减少搭建过程中遇到的问题,建议在使用之前对整个搭建的环境进行检查。  
 
