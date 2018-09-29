@@ -106,7 +106,7 @@ format.sh脚本执行失败，请尝试从新进行部署或手动将文件转�
 
 temp节点启动失败，端口号被占用，请检查sample.conf文件的端口号配置
 
--  ERROR | chain **** host ****, publish install package failed
+- ERROR | chain **** host ****, publish install package failed
 
 用户在hosts.conf指定的用户在对应服务器无法访问mchain.conf中dir的路径，请确认dir是否配置正确，或者给予权限。
 
