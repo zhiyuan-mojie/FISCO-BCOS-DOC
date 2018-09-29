@@ -27,20 +27,58 @@ python main.py -h
 ```
 可以查询到相关的操作命令
 ```
-usage: main.py [-h] [--version] [--build ./config.conf or ./conf/ fisco_path]
-               [--pkg_list all or chain_id or [chain_id_1 chain_id_2 ...]]
-               [--pub_list all or chain_id or [chain_id_1 chain_id_2 ...]]
+usage: main.py [-h] [--version] [--init_ansible]
+               [--build ./config.conf or ./conf/ fisco_path]
                [--publish chain_id:version eg. [chain_id_1:version_1 chain_id_2:version_1 chain_id_3:version_2.etc. ...]]
                [--check all or chain_id or [chain_id:host_ip ...]]
                [--stop all or chain_id or [chain_id:host_ip ...]]
                [--start all or chain_id or [chain_id:host_ip ...]]
                [--monitor all or chain_id or [chain_id:host_ip ...]]
+               [--pkg_list all or chain_id or [chain_id_1 chain_id_2 ...]]
+               [--pub_list all or chain_id or [chain_id_1 chain_id_2 ...]]
+               [--telnet all or host_ip or [host_ip1 host_ip2 ...]]
+               [--env_check all or host_ip [all or host_ip ...]]
+               [--cmd_push all:"cmd_1 cmd_2" or chain_id:"cmd_1 cmd_2" or [hostip:"cmd_1 cmd_2" ...]]
+               [--file_push all:scr_path:dest_path or chain_id:scr_path:dest_path or [chain_id:scr_path:dest_path or host_ip:scr_path:dest_path ...]]
                [--chainca ./dir_chain_caSET)]
                [--agencyca ./dir_agency_ca(SET) ./chain_ca_dir The Agency Name]
                [--sdkca ./dir_sdk_ca(SET ./dir_agency_ca]
-               [--echo all or host_ip or [host_ip1 host_ip2 ...]]
 ```
 以上是物料包支持的相关操作，解释如下。
+
+## 查看多链物料包版本 --version命令
+本命令用于查看当前多链物料包版本
+```
+python main.py --version
+```
+会得到如下提示
+```
+INFO | v1.0.0
+```
+
+## 初始化ansible hosts --init_ansible命令
+用户在配置conf/hosts时，需要用到本命令。
+
+本命令需要sudo权限对ansible的配置进行修改，用户每次修改hosts.conf都需要运行本命令。
+
+```
+python main.py --init_ansible
+```
+会得到如下提示
+```
+INFO | ansible init success
+```
+**注意，用户如果需要修改主机配置，则每次修改完./conf/hosts.conf后都需要执行init_ansible命令**
+
+
+## 检查目标服务器环境西依赖 --env_check命令
+本命令可以检测目标服务器环境依赖是否满足
+
+```
+python main.py --env_chec all  or host_ip ...
+```
+
+用户可以指定参数all查询配置的所有服务器，或是指定某些服务器ip查询对应服务器依赖。
 
 ## 生成多链安装包 --build命令
 本命令是解析用户输入的conf文件，生成相应安装包的命令。用户使用前需要确保运维服务器可以启动1.3版本的fisco-bcos，并且对应服务器的环境可以启动fisco-bcos
@@ -224,44 +262,44 @@ $ python main.py --build ./conf $PATH/fisco-bcos
 
 链id12347的链同理会在127.0.0.5和127.0.0.6上共同生成5个节点组成的一条链
 
-## 网络环境测试 --echo命令
-echo命令用来测试运维服务器是否可以与配置好的所有服务器进行ansible通信，操作如下
+## 网络环境测试 --telnet命令
+telnet命令用来测试运维服务器是否可以与配置好的所有服务器进行ansible通信，操作如下
 ```
-python main.py --echo all or host_ip or [host_ip1 host_ip2 ...]
+python main.py --telnet all or host_ip or [host_ip1 host_ip2 ...]
 ```
 检测ansible配置的所有服务器是否可以进行通信
 示例：
 ### 测试所有配置服务器
 ```
-python main.py --echo all
+python main.py --telnet all
 ```
 正确会得到以下提示
 ```
-INFO |  echo opr begin.
-INFO |  ansible echo opr success, host is all.
-INFO |  echo opr end.
+INFO |  telnet opr begin.
+INFO |  ansible telnet opr success, host is all.
+INFO |  telnet opr end.
 ```
 ### 测试单个服务器
 ```
-python main.py --echo 127.0.0.1
+python main.py --telnet 127.0.0.1
 ```
 正确会得到以下提示
 ```
-INFO |  echo opr begin.
-INFO |  ansible echo opr success, host is 127.0.0.1.
-INFO |  echo opr end.
+INFO |  telnet opr begin.
+INFO |  ansible telnet opr success, host is 127.0.0.1.
+INFO |  telnet opr end.
 ```
 ### 测试多个服务器
 ```
-python main.py --echo 127.0.0.1 127.0.0.2 127.0.0.3
+python main.py --telnet 127.0.0.1 127.0.0.2 127.0.0.3
 ```
 正确会得到以下提示
 ```
-INFO |  echo opr begin.
-INFO |  ansible echo opr success, host is 127.0.0.1.
-INFO |  ansible echo opr success, host is 127.0.0.2.
-INFO |  ansible echo opr success, host is 127.0.0.3.
-INFO |  echo opr end.
+INFO |  telnet opr begin.
+INFO |  ansible telnet opr success, host is 127.0.0.1.
+INFO |  ansible telnet opr success, host is 127.0.0.2.
+INFO |  ansible telnet opr success, host is 127.0.0.3.
+INFO |  telnet opr end.
 ```
 
 
@@ -439,6 +477,25 @@ $ python main.py --pub_list all
 ```
 $ python main.py --pub_list 12345 12346 12347
 ```
+## 执行shell --cmd_push命令
+cmd_push命令允许用户批量在对应服务器上执行本地的脚本，或是在对应服务器上直接执行一条shell命令
+```
+$ python main.py --cmd_push  all:"cmd_1 cmd_2" or chain_id:"cmd_1 cmd_2" or all:"./test.sh"
+```
+执行时命令会检测本地是否有对应路径下的脚本文件，如果没有会去对应服务器执行
+
+## 传输单独文件 --file_push命令
+file_push命令允许用户批量传输某个文件到对应服务器。
+```
+$ python main.py --file_push all:scr_path:dest_path or chain_id:scr_path:dest_path or [chain_id:scr_path:dest_path or host_ip:scr_path:dest_path ...]]
+```
+命令中第一项是对应服务器或链参数
+
+第二项为本地文件路径
+
+第三项为对应服务器路径
+
+注意本地路径和对应服务器路径格式一致，如都为绝对路径或相对路径
 
 ## ca证书相关操作 
 多链物料包允许用户生成相应证书，fisco bcos的证书相关介绍请参考-[证书介绍]()，操作如下
