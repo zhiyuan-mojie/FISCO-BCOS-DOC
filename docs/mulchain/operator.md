@@ -71,7 +71,7 @@ INFO | ansible init success
 **注意，用户如果需要修改主机配置，则每次修改完./conf/hosts.conf后都需要执行init_ansible命令**
 
 
-## 检查目标服务器环境西依赖 --env_check命令
+## 检查目标服务器环境依赖 --env_check命令
 本命令可以检测目标服务器环境依赖是否满足
 
 ```
