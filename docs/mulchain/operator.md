@@ -92,7 +92,10 @@ $ python main.py --build ./conf/sample_12345_v1.0.conf $PATH/fisco-bcos
 
 mchain.conf为相关的部署目录和机构名称，用户根据需要修改。
 
-用户使用时，首先更改./conf 目录下的sample_12345_v1.0.conf文件，如果需要部署多条链，需要拷贝多个conf文件。sample_12345_v1.0.conf文件示例如下：
+用户使用时，首先更改./conf 目录下的sample_12345_v1.0.conf文件，如果需要部署多条链，需要拷贝多个conf文件。
+<details> 
+<summary><font color="#0099ff">点击查看sample_12345_v1.0.conf文件示例</font></summary>
+<pre>
 ```
 ;common config
 [chain]
@@ -122,6 +125,8 @@ fisco-bcos的每个节点需要使用3个端口,p2pport、rpcport、channelport,
 node0=127.0.0.1 127.0.0.1 3
 node1=127.0.0.2 127.0.0.2 3
 ```
+</pre>
+</details>
 上面的配置首先要在127.0.0.1服务器上启动3个节点, 按照默认的配置：
 
 * 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
@@ -140,9 +145,12 @@ node1=127.0.0.2 127.0.0.2 3
 
 
 ### 生成多条链
-用户在conf文件夹下配置多个.conf文件，如sample_12345_v1.0.conf，sample_12346_v1.0.conf,sample_12347_v1.0.conf
-配置分别为
-#### sample_12345_v1.0.conf
+用户在conf文件夹下配置多个.conf文件，如 sample_12345_v1.0.conf，sample_12346_v1.0.conf,sample_12347_v1.0.conf。
+配置分别为:
+<details> 
+<summary><font color="#0099ff">点击查看sample_12345_v1.0.conf文件示例</font></summary>
+<pre>
+
 ```
 ;common config
 [chain]
@@ -168,7 +176,13 @@ channel_port=8821
 node0=127.0.0.1 127.0.0.1 3
 node1=127.0.0.2 127.0.0.2 3
 ```
-####  sample_12346_v1.0.conf
+</pre>
+</details>
+
+<details> 
+<summary><font color="#0099ff">点击查看sample_12346_v1.0.conf文件示例</font></summary>
+<pre>
+
 ```
 ;common config
 [chain]
@@ -195,7 +209,12 @@ node0=127.0.0.2 127.0.0.2 2
 node1=127.0.0.3 127.0.0.3 2
 node2=127.0.0.4 127.0.0.4 2
 ```
-####  sample_12347_v1.0.conf
+</pre>
+</details>
+
+<details> 
+<summary><font color="#0099ff">点击查看sample_12347_v1.0.conf文件示例</font></summary>
+
 ```
 ;common config
 [chain]
@@ -221,13 +240,21 @@ channel_port=8821
 node0=127.0.0.5 127.0.0.5 2
 node1=127.0.0.6 127.0.0.6 3
 ```
+
+<pre> 
+</pre>
+</details>
+
 执行
 ```
 $ python main.py --build ./conf $PATH/fisco-bcos
 ```
-上面的配置会生成三条链，
-链id12345的链会在
-首先要在127.0.0.5服务器上启动3个节点, 按照默认的配置：
+上面的配置会生成三条链。
+
+<details> 
+<summary><font color="#0099ff">链id12345的链会在按照默认的配置，在两台服务器上组成6个节点的一条链。</font></summary>
+
+首先要在127.0.0.5服务器上启动3个节点,
 
 * 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
 * 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
@@ -239,11 +266,16 @@ $ python main.py --build ./conf $PATH/fisco-bcos
 * 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
 * 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
 
+<pre> 
+</pre>
+</details>
   
-组成6个节点的一条链。
 
-链id12346的链会在
-首先要在127.0.0.2服务器上启动2个节点, 按照默认的配置：
+
+<details> 
+<summary><font color="#0099ff">链id12346的链按照默认的配置，在三条服务器上组成6个节点的一条链。</font></summary>
+
+首先要在127.0.0.2服务器上启动2个节点, 
 
 * 第1个节点的端口：p2p 30343、rpc 8555、channel 8831
 * 第2个节点的端口：p2p 30344、rpc 8556、channel 8832
@@ -257,10 +289,15 @@ $ python main.py --build ./conf $PATH/fisco-bcos
 
 * 第1个节点的端口：p2p 30343、rpc 8555、channel 8831
 * 第2个节点的端口：p2p 30344、rpc 8556、channel 8832
-* 
-组成6个节点的一条链。
 
-链id12347的链同理会在127.0.0.5和127.0.0.6上共同生成5个节点组成的一条链
+<pre> 
+</pre>
+</details>
+
+
+链id12347的链同理会在127.0.0.5和127.0.0.6上共同生成5个节点组成的一条链。
+
+通过进行配置，执行上述命令生成三条链。
 
 ## 网络环境测试 --telnet命令
 telnet命令用来测试运维服务器是否可以与配置好的所有服务器进行ansible通信，操作如下
@@ -275,9 +312,9 @@ python main.py --telnet all
 ```
 正确会得到以下提示
 ```
-INFO |  telnet opr begin.
-INFO |  ansible telnet opr success, host is all.
-INFO |  telnet opr end.
+INFO |  telnet begin.
+INFO |  ansible telnet success, host is all.
+INFO |  telnet end.
 ```
 ### 测试单个服务器
 ```
@@ -285,9 +322,9 @@ python main.py --telnet 127.0.0.1
 ```
 正确会得到以下提示
 ```
-INFO |  telnet opr begin.
-INFO |  ansible telnet opr success, host is 127.0.0.1.
-INFO |  telnet opr end.
+INFO |  telnet  begin.
+INFO |  ansible telnet success, host is 127.0.0.1.
+INFO |  telnet end.
 ```
 ### 测试多个服务器
 ```
@@ -295,11 +332,11 @@ python main.py --telnet 127.0.0.1 127.0.0.2 127.0.0.3
 ```
 正确会得到以下提示
 ```
-INFO |  telnet opr begin.
-INFO |  ansible telnet opr success, host is 127.0.0.1.
-INFO |  ansible telnet opr success, host is 127.0.0.2.
-INFO |  ansible telnet opr success, host is 127.0.0.3.
-INFO |  telnet opr end.
+INFO |  telnet begin.
+INFO |  ansible telnet success, host is 127.0.0.1.
+INFO |  ansible telnet success, host is 127.0.0.2.
+INFO |  ansible telnet success, host is 127.0.0.3.
+INFO |  telnet end.
 ```
 
 
@@ -319,10 +356,10 @@ $ python main.py --publish 12345:v1.0.0 12346:v1.0.0 12347:v1.0.0
 ```
 执行完成后可以看到
 ```
-INFO |  publish opr begin.
+INFO |  publish begin.
 ****
 ****
-INFO |  publish opr end.
+INFO |  publish end.
 ```
 
 ## 启动多链节点 --start命令
@@ -338,12 +375,12 @@ $ python main.py --start all
 ```
 执行完成后可以看到
 ```
-INFO |  start opr begin.
-INFO |  ansible start opr success, host is 127.0.0.1.
-INFO |  ansible start opr success, host is 127.0.0.2.
+INFO |  start begin.
+INFO |  ansible start success, host is 127.0.0.1.
+INFO |  ansible start success, host is 127.0.0.2.
 ***
 ***
-INFO |  start opr end.
+INFO |  start end.
 ```
 上述命令启动了部署完成的所有链的全部节点
 ### 启动多条链节点
@@ -352,12 +389,12 @@ $ python main.py --start 12345 12346 12347
 ```
 执行完成后可以看到
 ```
-INFO |  start opr begin.
-INFO |  ansible start opr success, host is 127.0.0.1.
-INFO |  ansible start opr success, host is 127.0.0.2.
+INFO |  start begin.
+INFO |  ansible start success, host is 127.0.0.1.
+INFO |  ansible start success, host is 127.0.0.2.
 ***
 ***
-INFO |  start opr end.
+INFO |  start end.
 ```
 上述命令启动了链id为12345 12346 12347三条链的节点
 
@@ -367,12 +404,12 @@ $ python main.py --start 12345:127.0.0.1 12346:127.0.0.2 12347:127.0.0.3
 ```
 执行完成后可以看到
 ```
-INFO |  start opr begin.
-INFO |  ansible start opr success, host is 127.0.0.1.
-INFO |  ansible start opr success, host is 127.0.0.2.
+INFO |  start begin.
+INFO |  ansible start success, host is 127.0.0.1.
+INFO |  ansible start success, host is 127.0.0.2.
 ***
 ***
-INFO |  start opr end.
+INFO |  start end.
 ```
 上述命令启动了链12345在127.0.0.1服务器上的3个节点， 链12346在127.0.0.2上的3个节点， 12347在127.0.0.3上的2个节点。
 
@@ -380,8 +417,7 @@ INFO |  start opr end.
 ```
 $ python main.py --stop [all or chain_id or chain_id:host_ip]
 ```
-stop命令的原理与start命令类似
-示例如下：
+stop命令的原理与start命令类似，示例如下：
 ### 停止部署所有链所有节点
 ```
 $ python main.py --stop all
@@ -477,11 +513,13 @@ $ python main.py --pub_list all
 ```
 $ python main.py --pub_list 12345 12346 12347
 ```
+
 ## 执行shell --cmd_push命令
 cmd_push命令允许用户批量在对应服务器上执行本地的脚本，或是在对应服务器上直接执行一条shell命令
 ```
 $ python main.py --cmd_push  all:"cmd_1 cmd_2" or chain_id:"cmd_1 cmd_2" or all:"./test.sh"
 ```
+
 执行时命令会检测本地是否有对应路径下的脚本文件，如果没有会去对应服务器执行
 
 ## 传输单独文件 --file_push命令
@@ -489,6 +527,7 @@ file_push命令允许用户批量传输某个文件到对应服务器。
 ```
 $ python main.py --file_push all:scr_path:dest_path or chain_id:scr_path:dest_path or [chain_id:scr_path:dest_path or host_ip:scr_path:dest_path ...]]
 ```
+
 命令中第一项是对应服务器或链参数
 
 第二项为本地文件路径
@@ -498,7 +537,7 @@ $ python main.py --file_push all:scr_path:dest_path or chain_id:scr_path:dest_pa
 注意本地路径和对应服务器路径格式一致，如都为绝对路径或相对路径
 
 ## ca证书相关操作 
-多链物料包允许用户生成相应证书，fisco bcos的证书相关介绍请参考-[证书介绍]()，操作如下
+多链物料包允许用户生成相应证书，fisco bcos的证书相关介绍请参考-[证书介绍](https://fisco-bcos-documentation.readthedocs.io/zh_CN/feature-multichain/docs/usage/cert_permission.html)，操作如下
 
 ### 生成根证书 --chainca命令
 用户可以指定目录，生成根证书
