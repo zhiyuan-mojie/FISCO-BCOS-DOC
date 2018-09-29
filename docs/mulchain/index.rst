@@ -14,8 +14,12 @@ FISCO BCOS 物理多链是针对机构内同时部署多条链的物料包。操
 当前多链物料包版本号为v1.0.0
 
 执行
+
 ```
 git clone https://github.com/HaoXuan40404/Over-Wafer-Multi-Chain.git
+```
+
+```
 git checkout dev
 ```
 
