@@ -34,4 +34,6 @@ git checkout dev
    pythoncheck.md
    ansiblecheck.md
    operator.md
+   sample.md
    FAQ.md
+

@@ -28,13 +28,6 @@ $ sudo apt-get install ansible
 $ ssh-keygen -t rsa
 $ cp id_rsa  id_rsa.pub ~/.ssh/
 ```
-用户在OWMC/conf文件夹下修改hosts.conf格式如下
-```
-user 127.0.0.1 22 123
-user 127.0.0.2 80 123
-user 127.0.0.3 36000 123
-```
-第一项为用户名，第二项为ip 第三项为端口号，第四项为密码
 
 需要在sshd_config文件中开启key认证
 ```
@@ -43,38 +36,18 @@ PubkeyAuthentication yes  //将该项改为yes
 ```
 修改完成后，通过/etc/init.d/sshd restart 重启ssh服务重新加载配置。
 之后在多链物料包文件夹下执行
-```
-python main.py --init_ansible
-```
-会得到如下提示
-```
-INFO | ansible init success
-```
-**注意，用户如果需要修改主机配置，则每次修改完./conf/hosts.conf后都需要执行init_ansible命令**
 
 ## 检测
 配置完成之后，使用下述命令进行测试
 ```
-$ ansible all -m ping
+$ ansible 127.0.0.1 -m ping
 ```
-
-如果正确会输出下述标准输出
+如果程序正确安装会输出下述标准输出
 
 ```
 127.0.0.1 | SUCCESS => {
     "changed": false, 
     "ping": "pong"
 }
-127.0.0.2 | SUCCESS => {
-    "changed": false, 
-    "ping": "pong"
-}
-127.0.0.3 | SUCCESS => {
-    "changed": false, 
-    "ping": "pong"
-}
-127.0.0.4 | SUCCESS => {
-    "changed": false, 
-    "ping": "pong"
-}
+
 ```

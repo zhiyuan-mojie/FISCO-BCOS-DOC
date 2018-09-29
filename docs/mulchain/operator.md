@@ -75,7 +75,7 @@ INFO | ansible init success
 本命令可以检测目标服务器环境依赖是否满足
 
 ```
-python main.py --env_chec all  or host_ip ...
+python main.py --env_check all  or host_ip ...
 ```
 
 用户可以指定参数all查询配置的所有服务器，或是指定某些服务器ip查询对应服务器依赖。
@@ -93,211 +93,12 @@ $ python main.py --build ./conf/sample_12345_v1.0.conf $PATH/fisco-bcos
 mchain.conf为相关的部署目录和机构名称，用户根据需要修改。
 
 用户使用时，首先更改./conf 目录下的sample_12345_v1.0.conf文件，如果需要部署多条链，需要拷贝多个conf文件。
-<details> 
-<summary><font color="#0099ff">点击查看sample_12345_v1.0.conf文件示例</font></summary>
-<pre>
-```
-;common config
-[chain]
-chainid=12345
-version=v1.0.0
-```
-链相关配置，chainid为链id，必须为整形。version为版本号
-```
-;port config, in general, use the default values
-[ports]
-; p2p port
-p2p_port=30303
-; rpc port
-rpc_port=8545
-; channel port
-channel_port=8821
-```
-fisco-bcos的每个节点需要使用3个端口,p2pport、rpcport、channelport, [ports]配置的端口是服务器上面的第一个节点使用的端口,其他节点依次递增。
-```
-;node info
-[nodes]
-; node config format : nodeIDX= host_ip p2p_ip node_num
-; IDX is index value
-; host_ip : host ip network of the server
-; p2p_ip ：p2p ip network of the server
-; num ：the num of the node on this server
-node0=127.0.0.1 127.0.0.1 3
-node1=127.0.0.2 127.0.0.2 3
-```
-</pre>
-</details>
-上面的配置首先要在127.0.0.1服务器上启动3个节点, 按照默认的配置：
-
-* 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
-* 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
-* 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
-  
-然后在127.0.0.2服务器上启动3个节点, 按照默认的配置：
-
-* 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
-* 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
-* 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
-  
-上述配置共同在两个服务器上组成6个节点的一条链。
-
-生成的安装包在./data/chain 目录下
-
-
-### 生成多条链
-用户在conf文件夹下配置多个.conf文件，如 sample_12345_v1.0.conf，sample_12346_v1.0.conf,sample_12347_v1.0.conf。
-配置分别为:
-<details> 
-<summary><font color="#0099ff">点击查看sample_12345_v1.0.conf文件示例</font></summary>
-<pre>
-
-```
-;common config
-[chain]
-chainid=12345
-version=v1.0.0
-
-;port config, in general, use the default values
-[ports]
-; p2p port
-p2p_port=30303
-; rpc port
-rpc_port=8545
-; channel port
-channel_port=8821
-
-;node info
-[nodes]
-; node config format : nodeIDX= host_ip p2p_ip node_num
-; IDX is index value
-; host_ip : host ip network of the server
-; p2p_ip ：p2p ip network of the server
-; num ：the num of the node on this server
-node0=127.0.0.1 127.0.0.1 3
-node1=127.0.0.2 127.0.0.2 3
-```
-</pre>
-</details>
-
-<details> 
-<summary><font color="#0099ff">点击查看sample_12346_v1.0.conf文件示例</font></summary>
-<pre>
-
-```
-;common config
-[chain]
-chainid=12346
-version=v1.0.0
-
-;port config, in general, use the default values
-[ports]
-; p2p port
-p2p_port=30343
-; rpc port
-rpc_port=8555
-; channel port
-channel_port=8831
-
-;node info
-[nodes]
-; node config format : nodeIDX= host_ip p2p_ip node_num
-; IDX is index value
-; host_ip : host ip network of the server
-; p2p_ip ：p2p ip network of the server
-; num ：the num of the node on this server
-node0=127.0.0.2 127.0.0.2 2
-node1=127.0.0.3 127.0.0.3 2
-node2=127.0.0.4 127.0.0.4 2
-```
-</pre>
-</details>
-
-<details> 
-<summary><font color="#0099ff">点击查看sample_12347_v1.0.conf文件示例</font></summary>
-
-```
-;common config
-[chain]
-chainid=12347
-version=v1.0.0
-
-;port config, in general, use the default values
-[ports]
-; p2p port
-p2p_port=30303
-; rpc port
-rpc_port=8545
-; channel port
-channel_port=8821
-
-;node info
-[nodes]
-; node config format : nodeIDX= host_ip p2p_ip node_num
-; IDX is index value
-; host_ip : host ip network of the server
-; p2p_ip ：p2p ip network of the server
-; num ：the num of the node on this server
-node0=127.0.0.5 127.0.0.5 2
-node1=127.0.0.6 127.0.0.6 3
-```
-
-<pre> 
-</pre>
-</details>
 
 执行
 ```
 $ python main.py --build ./conf $PATH/fisco-bcos
 ```
-上面的配置会生成三条链。
-
-<details> 
-<summary><font color="#0099ff">链id12345的链会在按照默认的配置，在两台服务器上组成6个节点的一条链。</font></summary>
-
-首先要在127.0.0.5服务器上启动3个节点,
-
-* 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
-* 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
-* 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
-  
-然后在127.0.0.6服务器上启动3个节点, 按照默认的配置：
-
-* 第1个节点的端口：p2p 30303、rpc 8545、channel 8821
-* 第2个节点的端口：p2p 30304、rpc 8546、channel 8822
-* 第3个节点的端口：p2p 30305、rpc 8547、channel 8823
-
-<pre> 
-</pre>
-</details>
-  
-
-
-<details> 
-<summary><font color="#0099ff">链id12346的链按照默认的配置，在三条服务器上组成6个节点的一条链。</font></summary>
-
-首先要在127.0.0.2服务器上启动2个节点, 
-
-* 第1个节点的端口：p2p 30343、rpc 8555、channel 8831
-* 第2个节点的端口：p2p 30344、rpc 8556、channel 8832
-  
-然后在127.0.0.3服务器上启动2个节点, 按照默认的配置：
-
-* 第1个节点的端口：p2p 30343、rpc 8555、channel 8831
-* 第2个节点的端口：p2p 30344、rpc 8556、channel 8832
-  
-最后在127.0.0.4服务器上启动2个节点, 按照默认的配置：
-
-* 第1个节点的端口：p2p 30343、rpc 8555、channel 8831
-* 第2个节点的端口：p2p 30344、rpc 8556、channel 8832
-
-<pre> 
-</pre>
-</details>
-
-
-链id12347的链同理会在127.0.0.5和127.0.0.6上共同生成5个节点组成的一条链。
-
-通过进行配置，执行上述命令生成三条链。
+可以生成conf文件夹下配置的多条链
 
 ## 网络环境测试 --telnet命令
 telnet命令用来测试运维服务器是否可以与配置好的所有服务器进行ansible通信，操作如下
@@ -556,3 +357,5 @@ python main.py --agencyca ./dir_agency_ca(SET) ./chain_ca_dir The_Agency_Name
 用户可以指定sdk存放目录，机构证书存放目录，生成sdk证书
 sdkca ./dir_sdk_ca(SET) ./dir_agency_ca
 执行完成后可以在./dir_sdk_ca(SET)路径下生成名为sdk的文件夹，包含相应的sdk证书
+
+
