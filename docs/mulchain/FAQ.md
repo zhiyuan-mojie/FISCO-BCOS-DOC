@@ -102,6 +102,14 @@ format.sh脚本执行失败，请尝试从新进行部署或手动将文件转�
 
 用户指定的该版本号的该链存在，请检查是否之前配置过该链
 
+- ERROR | build install package for chain 12345 version v1.0.0 failed, exception is temp node start failed.
+
+temp节点启动失败，端口号被占用，请检查sample.conf文件的端口号配置
+
+-  ERROR | chain **** host ****, publish install package failed
+
+用户在hosts.conf指定的用户在对应服务器无法访问mchain.conf中dir的路径，请确认dir是否配置正确，或者给予权限。
+
 ## publish命令错误
 
 - ERROR | skip, invalid publish format, chain_id:chain_version should require, chain is **
