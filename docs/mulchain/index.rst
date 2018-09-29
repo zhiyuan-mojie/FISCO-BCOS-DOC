@@ -33,7 +33,7 @@ git checkout dev
    javacheck.md
    pythoncheck.md
    ansiblecheck.md
-   operator.md
    sample.md
+   operator.md
    FAQ.md
 
