@@ -23,10 +23,9 @@ $ sudo apt-get install ansible
 配置前需要确保与对应主机可以进行ssh通信,物料包使用的ansible通信方式自动公钥认证方式，因此用户需要执行以下命令配置ssh密钥。
 
 
-以下命令请使用默认配置，用户不需要其他输入
+以下命令请使用默认设置，输入三次回车即可
 ```
 $ ssh-keygen -t rsa
-$ cp id_rsa  id_rsa.pub ~/.ssh/
 ```
 
 需要在sshd_config文件中开启key认证
