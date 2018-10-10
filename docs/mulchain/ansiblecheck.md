@@ -2,7 +2,7 @@
 请注意
 **只需要在运维服务器上部署ansible即可**
 
-部署多链时需要用到ansible进行多服务器的数据流传输。本文是多链物料包ansible的配置文档。
+部署OWMC时需要用到ansible进行多服务器的数据流传输。本文是OWMC物料包ansible的配置文档。
 
 ## 安装
 centOS系统
@@ -34,7 +34,7 @@ $ vim /etc/ssh/sshd_config
 PubkeyAuthentication yes  //将该项改为yes 
 ```
 修改完成后，通过/etc/init.d/sshd restart 重启ssh服务重新加载配置。
-之后在多链物料包文件夹下执行
+之后在OWMC物料包文件夹下执行
 
 ## 检测
 配置完成之后，使用下述命令进行测试
