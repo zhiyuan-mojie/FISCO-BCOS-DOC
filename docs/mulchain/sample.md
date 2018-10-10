@@ -1,4 +1,4 @@
-# 多链搭建示例
+# OWMC搭建示例
 本章我们会给出一个示例，假设用户使用一台运维服务器，拥有三条托管服务器，hostip分别为127.0.0.1,127.0.0.2,127.0.0.3。让用户在运维服务器上快速搭建两条链，其中一条链有6个节点，分别部署在三台服务器上，另外一条链有4个节点，部署在自己的托管服务器上。
 
 
@@ -19,7 +19,7 @@ git checkout dev
 
 [ansible配置](https://fisco-bcos-documentation.readthedocs.io/zh_CN/feature-multichain/docs/mulchain/ansiblecheck.html)
 
-## 多链参数配置
+## 参数配置
 在生成安装包之前，用户需要对hosts.conf，mchain.conf和sample_12345_v1.0.conf进行链相关属性配置
 ```
 cd Over-Wafer-Multi-Chain/
@@ -164,7 +164,7 @@ node2=127.0.0.3 127.0.0.3 2
 
 ## 启动两条链
 
-### 初始化多链环境
+### 初始化环境
 ```
 python main.py --init_ansible
 ```

@@ -1,5 +1,5 @@
-# 多链物料包 python2.7配置文档
-多链物料包需要使用python2.7来生成相关安装包，本文是python2.7的配置文档。有些系统默认的python版本为3.X版本，因此需要对系统的python版本进行配置
+# OWMC python2.7配置文档
+OWMC需要使用python2.7来生成相关安装包，本文是python2.7的配置文档。有些系统默认的python版本为3.X版本，因此需要对系统的python版本进行配置
 
 ## 安装
 
