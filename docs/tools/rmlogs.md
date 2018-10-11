@@ -1,5 +1,6 @@
-# 日志清理脚本rmlogs.sh的使用
-# 介绍
+# 日志清理脚本rmlogs.sh
+
+## 介绍
 使用物料包(**[fisco-package-build-tool](https://github.com/ywy2090/fisco-package-build-tool)**)搭建的fisco-bcos环境, 最终在生成的build目录会有个rmlogs.sh脚本。
 可以用来删除fisco-bcos生成的日志文件。
 
