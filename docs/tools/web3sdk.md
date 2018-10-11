@@ -48,4 +48,12 @@ $ java -cp 'conf/:apps/*:lib/*' org.bcos.channel.test.TestOk
 
 测试是否配置成功
 
+## [监控脚本monitor.sh的使用]
+[monitor.sh监控脚本](https://fisco-bcos-documentation.readthedocs.io/zh_CN/feature-multichain/docs/tools/monitor.html)可以用来监控节点是否正常启动, 以及整条链是否正常工作, 详情使用参考链接.
+
+## [日志清理脚本rmlogs.sh的使用]
+[日志清理脚本rmlogs.sh](https://fisco-bcos-documentation.readthedocs.io/zh_CN/lfeature-multichain/docs/tools/rmlogs.html)可以用来清理fisco-bcos产生的日志文件, 具体参考链接使用文档.
+
+
+
 
